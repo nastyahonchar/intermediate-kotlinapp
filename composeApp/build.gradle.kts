@@ -49,6 +49,7 @@ kotlin {
             implementation(libs.datetime)
             implementation(libs.navigation.compose)
             implementation(libs.material.icons.core)
+            api(libs.androidx.lifecycle.viewmodel)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

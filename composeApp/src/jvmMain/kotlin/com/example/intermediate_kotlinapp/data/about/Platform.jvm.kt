@@ -1,8 +1,9 @@
-package com.example.intermediate_kotlinapp
+package com.example.intermediate_kotlinapp.data.about
 
 import co.touchlab.kermit.Logger
 import java.awt.Toolkit
 
+@Suppress("EXPECT_ACTUAL_CLASSIFIERS_ARE_IN_BETA_WARNING")
 actual class Platform actual constructor() {
     actual val osName: String
         get() = System.getProperty("os.name") ?: "Desktop"
@@ -21,6 +22,7 @@ actual class Platform actual constructor() {
     }
 }
 
+@Suppress("EXPECT_ACTUAL_CLASSIFIERS_ARE_IN_BETA_WARNING")
 actual class ScreenInfo actual constructor() {
 
     private val toolkit = Toolkit.getDefaultToolkit()

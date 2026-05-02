@@ -16,21 +16,24 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.intermediate_kotlinapp.Platform
-import kotlin.math.max
-import kotlin.math.min
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
-fun AboutPage(
+internal fun AboutScreen(
+    viewModel: AboutViewModel = viewModel(
+        factory = aboutViewModelFactory,
+    ),
     onUpButtonClick: () -> Unit
 ) {
     Column {
         Toolbar(onUpButtonClick = onUpButtonClick)
-        ContentView()
+        AboutContent(viewModel)
     }
 }
 
@@ -53,38 +56,16 @@ private fun Toolbar(
 }
 
 @Composable
-private fun ContentView() {
-    val items = makeItems()
+private fun AboutContent(viewModel: AboutViewModel) {
+    val state by viewModel.state.collectAsState()
 
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
     ) {
-        items(items) { row ->
+        items(state) { row ->
             RowView(title = row.first, subtitle = row.second)
         }
     }
-}
-
-private fun makeItems(): List<Pair<String, String>> {
-    val platform = Platform()
-
-    val items = mutableListOf(
-        Pair("Operating System", "${platform.osName} ${platform.osVersion}"),
-        Pair("Device", platform.deviceModel),
-        Pair("CPU", platform.cpuType)
-    )
-
-    //3
-    val max = max(platform.screen.width, platform.screen.height)
-    val min = min(platform.screen.width, platform.screen.height)
-
-    var displayInfo = "${max}×${min}"
-    platform.screen.density?.let {
-        displayInfo += " ${it}x"
-    }
-    items.add(Pair("Display", displayInfo))
-
-    return items
 }
 
 @Composable
@@ -111,6 +92,6 @@ private fun RowView(
 @Preview(showBackground = true)
 @Composable
 private fun AboutPreview() {
-    AboutPage {
+    AboutScreen {
     }
 }

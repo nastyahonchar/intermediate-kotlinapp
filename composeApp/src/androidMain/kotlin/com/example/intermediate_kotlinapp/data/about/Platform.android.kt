@@ -1,4 +1,4 @@
-package com.example.intermediate_kotlinapp
+package com.example.intermediate_kotlinapp.data.about
 
 import android.content.res.Resources
 import android.os.Build

@@ -1,4 +1,4 @@
-package com.example.intermediate_kotlinapp
+package com.example.intermediate_kotlinapp.data.about
 
 actual class Platform actual constructor() {
     actual val osName: String

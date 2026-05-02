@@ -1,4 +1,4 @@
-package com.example.intermediate_kotlinapp
+package com.example.intermediate_kotlinapp.data.about
 
 expect class Platform() {
     val osName: String
