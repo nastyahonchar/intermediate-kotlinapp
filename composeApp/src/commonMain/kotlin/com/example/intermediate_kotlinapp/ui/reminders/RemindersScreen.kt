@@ -14,6 +14,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.intermediate_kotlinapp.ui.about.AboutScreen
+import com.example.intermediate_kotlinapp.ui.theme.AppTheme
 
 @Composable
 fun RemindersPage(
@@ -56,5 +58,7 @@ private fun ContentView() {
 @Preview(showBackground = true)
 @Composable
 private fun RemindersViewPreview() {
-    RemindersPage {}
+    AppTheme {
+        RemindersPage {}
+    }
 }

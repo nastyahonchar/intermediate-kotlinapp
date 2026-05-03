@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.intermediate_kotlinapp.ui.root.AppScaffold
+import com.example.intermediate_kotlinapp.ui.theme.AppTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,7 +15,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            AppScaffold()
+            AppTheme{
+                AppScaffold()
+            }
         }
     }
 }
@@ -22,5 +25,7 @@ class MainActivity : ComponentActivity() {
 @Preview
 @Composable
 fun AppAndroidPreview() {
-    AppScaffold()
+    AppTheme{
+        AppScaffold()
+    }
 }

@@ -23,6 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.intermediate_kotlinapp.ui.theme.AppTheme
 
 @Composable
 internal fun AboutScreen(
@@ -78,7 +79,7 @@ private fun RowView(
             Text(
                 text = title,
                 style = MaterialTheme.typography.bodySmall,
-                color = Color.Gray,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
             Text(
                 text = subtitle,
@@ -92,6 +93,7 @@ private fun RowView(
 @Preview(showBackground = true)
 @Composable
 private fun AboutPreview() {
-    AboutScreen {
+    AppTheme {
+        AboutScreen{}
     }
 }
