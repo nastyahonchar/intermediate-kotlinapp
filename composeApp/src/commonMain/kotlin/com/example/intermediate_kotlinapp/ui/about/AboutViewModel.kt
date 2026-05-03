@@ -11,8 +11,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 @Stable
-internal class AboutViewModel constructor(
-    private val aboutRepository: AboutRepository
+internal class AboutViewModel(
+    private val aboutRepository: AboutRepository,
 ) : ViewModel() {
 
     private val _state = MutableStateFlow<List<Pair<String, String>>>(emptyList())
@@ -35,4 +35,4 @@ val aboutViewModelFactory = viewModelFactory {
     }
 }
 
-private fun getAboutRepository(): AboutRepository = AboutRepository()
+internal fun getAboutRepository(): AboutRepository = AboutRepository()
