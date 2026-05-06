@@ -18,18 +18,15 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
+import org.koin.compose.viewmodel.koinViewModel
 import com.example.intermediate_kotlinapp.ui.theme.AppTheme
 
 @Composable
 internal fun AboutScreen(
-    viewModel: AboutViewModel = viewModel(
-        factory = aboutViewModelFactory,
-    ),
+    viewModel: AboutViewModel = koinViewModel(),
     onUpButtonClick: () -> Unit
 ) {
     Column {
