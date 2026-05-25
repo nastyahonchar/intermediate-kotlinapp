@@ -25,6 +25,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -81,8 +82,19 @@ private fun AboutContent(viewModel: AboutViewModel) {
         contentPadding = PaddingValues(12.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        items(state) { row ->
+        items(state.platformInfo) { row ->
             RowView(title = row.first, subtitle = row.second)
+        }
+        item {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth().padding(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = "Screen visited ${state.visitedCount} times."
+                )
+            }
         }
     }
 }
