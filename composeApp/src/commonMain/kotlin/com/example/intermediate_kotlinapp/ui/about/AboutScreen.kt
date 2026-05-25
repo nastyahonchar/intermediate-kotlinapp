@@ -92,7 +92,11 @@ private fun AboutContent(viewModel: AboutViewModel) {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = "Screen visited ${state.visitedCount} times."
+                    text = "Visited ${state.visitedCount} times."
+                )
+                Spacer(Modifier.height(4.dp))
+                Text(
+                    text = "Last time visited at ${state.visitedDate}."
                 )
             }
         }
