@@ -64,7 +64,7 @@ internal fun RemindersPage(
             .background(MaterialTheme.colorScheme.primaryContainer)
     ) {
         Toolbar(onAboutButtonClick = onAboutButtonClick)
-        ContentView(viewModel)
+        RemindersContent(viewModel)
     }
 }
 
@@ -94,7 +94,7 @@ private fun Toolbar(
 }
 
 @Composable
-private fun ContentView(viewModel: ReminderViewModel) {
+private fun RemindersContent(viewModel: ReminderViewModel) {
 
     val focusManager = LocalFocusManager.current
     val focusRequester = remember { FocusRequester() }
@@ -107,8 +107,8 @@ private fun ContentView(viewModel: ReminderViewModel) {
 
     var textFieldValue by remember { mutableStateOf("") }
 
-    viewModel.onRemindersUpdated = {
-        reminders = it
+    viewModel.onRemindersUpdated = { newList ->
+        reminders = newList
     }
 
     LazyColumn(modifier = Modifier.fillMaxSize()) {
@@ -215,7 +215,6 @@ private fun RemindersViewPreview() {
     AppTheme {
         RemindersPage(
             onAboutButtonClick = {},
-            viewModel = ReminderViewModel(RemindersRepository())
         )
     }
 }
